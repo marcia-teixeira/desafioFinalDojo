@@ -1,0 +1,25 @@
+{
+  "name": "desafiofinaldojo",
+  "version": "1.0.0",
+  "description": "Projeto de conclusão do Dojo de Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy-run": "npx cypress run --browser chrome",
+    "cy-dashboard": "npx cypress run --record --key afe144c7-2e21-4f1c-8d2a-ef1934397a95"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcia-teixeira/desafioFinalDojo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcia-teixeira/desafioFinalDojo/issues"
+  },
+  "homepage": "https://github.com/marcia-teixeira/desafioFinalDojo#readme",
+  "devDependencies": {
+    "cypress": "^10.9.0"
+  }
+}
