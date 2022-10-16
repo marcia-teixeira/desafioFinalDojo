@@ -1,22 +1,26 @@
 /// <reference types="cypress" />
-import ContaUsuarioPage from "../../support/pages/cadastroUsuario.page"
+import ContaUsuarioPage from "../../support/pages/ContaUsuario.page"
+const fake = require('faker-br')
+
+
 
 describe('Funcionalidade: Carrinho de Compras', () => {
 
     beforeEach(() => {
 
-        ContaUsuarioPage.Visitar()
-
-        /*cy.visit('/')*/
+        ContaUsuarioPage.LoginPage()
+        cy.fixture("usuarioValido").then((usuarioValido) => {
+            cy.AcessarContaUsuario(usuarioValido.email, usuarioValido.senha)                  
+        })
     });
 
-    it.only('Adiciona itens ao carinho de compras', () => {
+    it('Funcionalidade: Carinho de Compra', () => {        
+       
+       ContaUsuarioPage. adicionarItensCarinho()
+              
 
-        ContaUsuarioPage.criarConta('testandopage@gmail.com.br', 'testandopage10')
-        
-    });
-    it('Valida se os itens foram adicionados ao carinho de compras', () => {
-        
+
     });
     
+
 });
