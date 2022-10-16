@@ -1,14 +1,13 @@
 /// <reference types="cypress" />
-import ContaUsuarioPage from "../../support/pages/ContaUsuario.page"
-const fake = require('faker-br')
-
+import CadastrarUsuario from "../../support/pages/ContaUsuario.page"
+import Comprar from "../../support/pages/adicionarItemCarrinho.page"
 
 
 describe('Funcionalidade: Carrinho de Compras', () => {
 
     beforeEach(() => {
 
-        ContaUsuarioPage.LoginPage()
+        CadastrarUsuario.LoginPage()
         cy.fixture("usuarioValido").then((usuarioValido) => {
             cy.AcessarContaUsuario(usuarioValido.email, usuarioValido.senha)                  
         })
@@ -16,8 +15,7 @@ describe('Funcionalidade: Carrinho de Compras', () => {
 
     it('Funcionalidade: Carinho de Compra', () => {        
        
-       ContaUsuarioPage. adicionarItensCarinho()
-              
+       Comprar.adicionarItensCarinho()              
 
 
     });

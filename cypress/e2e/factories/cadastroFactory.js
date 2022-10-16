@@ -1,4 +1,4 @@
-var faker = require('faker-br')
+let faker = require('faker-br')
 
 export default {
 
@@ -12,13 +12,7 @@ export default {
             name: `${firstName} ${lastName}`,
             email: faker.internet.email(firstName),
             password: '123456@1',
-            message:
-            {
-                successmessage: 'Bem-vindo',
-                emptyPassword: 'Senha é obrigatória',
-                divergentpassword: 'Senhas precisam ser idênticas',
-                invalidemail: 'Digite um email válido'
-            }
+            
 
         }
         return data
