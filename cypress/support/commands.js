@@ -7,40 +7,50 @@ Cypress.Commands.add('AcessarContaUsuario', (email, senha) => {
     cy.get('.page-title').should('have.text', 'Minha conta')  
 })
 
-Cypress.Commands.add('AdicionarItensCarinho', () => {
+Cypress.Commands.add('ListarCupons', () => {
 
-    cy.get('.breadcrumb > :nth-child(1) > a').click()
-    cy.get('#primary-menu > .menu-item-629 > a').click()
-    cy.get(':nth-child(8) > .page-numbers').click()
-    cy.get('.post-2913 > .product-block > .caption > .meta > .infor > .name > a').click()    //Item
-    cy.get('.button-variable-item-32').click()
-    cy.get('.button-variable-item-Blue').click()     
-    cy.get('.single_add_to_cart_button').should('be.enabled')
-    cy.get('.single_add_to_cart_button').click()
-    cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
-    
-    cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
-    cy.get(':nth-child(7) > .page-numbers').click()
-    cy.get('.post-3404 > .product-block > .caption > .meta > .infor > .name > a').click()       //Item
-    cy.get('.button-variable-item-33').click()
-    cy.get('.button-variable-item-Purple').click()
-    cy.get('.single_add_to_cart_button').should('be.enabled')
-    cy.get('.single_add_to_cart_button').click()
-    cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
+    cy.request({
+        method: 'GET',
+        url: '/wp-json/wc/v3/coupons',
+        headers: {
 
-    cy.get('.tbay-woocommerce-breadcrumb > :nth-child(2) > a').click()
-    cy.get(':nth-child(7) > .page-numbers').click()
-    cy.get('.post-3674 > .product-block > .caption > .meta > .infor > .name > a').click()       //Item
-    cy.get('.button-variable-item-M').click()
-    cy.get(':nth-child(2) > .value > .variable-items-wrapper > .variable-item').click()
-    cy.get('.single_add_to_cart_button').should('be.enabled')
-    cy.get('.single_add_to_cart_button').click()
-    cy.get('.woocommerce-message').should('contain', 'foi adicionado no seu carrinho')
-    cy.get('.woocommerce-message > .button').click()
-    cy.url().should('be.equal', 'http://lojaebac.ebaconline.art.br/carrinho/')
-    cy.get('tbody > :nth-child(1) > .product-name').should('contain', 'Viktor LumaTech™ Pant - 32, Blue')
-    cy.get('tbody > :nth-child(2) > .product-name').should('contain', 'Torque Power Short - 33, Purple')
-    cy.get(':nth-child(3) > .product-name').should('contain', 'Tiberius Gym Tank - M, Yellow')
+            authorization: "Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy"
+        }
+
+    }).should((response) => {
+
+        expect(response.status).to.equal(200)            
+        expect(response.body[0]).to.have.property('code')
+
+    })
+
+})
+
+Cypress.Commands.add('CriarCupons', () =>{
+
+    let Cupom = `Cupom ID_${Math.floor(Math.random() * 1000000000)}`        
+
+    cy.request({
+        method: 'POST',
+        url: '/wp-json/wc/v3/coupons',
+        headers: {
+
+            authorization: "Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy"
+        },
+        body:{
+
+            "code": `DojoGanha10${Cupom}`,
+            "amount": "10",
+            "discount_type": "fixed_product",
+            "description": "Cupom de desconto de teste_Dojo"
 
 
+        }
+
+    }).should((response) => {
+
+        expect(response.status).to.equal(201)            
+        expect(response.body.code).to.have.contain('dojoganha10')
+
+    })
 })
