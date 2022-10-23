@@ -4,7 +4,7 @@ class Comprar {
   
     get #menuHome() { return cy.get('.breadcrumb > :nth-child(1) > a') }
     get #menuComprar() { return cy.get('#primary-menu > .menu-item-629 > a') }
-    get #btnPagina11() { return cy.get(':nth-child(8) > .page-numbers') }
+    get #btnPagina11() { return cy.get(':nth-child(7) > .page-numbers') }
     get #itemCalça() { return cy.get('.post-2913 > .product-block > .caption > .meta > .infor > .name > a') }
     get #btnSelecTamanho32() { return cy.get('.button-variable-item-32') }
     get #btnSelecCorAzul() { return cy.get('.button-variable-item-Blue') }

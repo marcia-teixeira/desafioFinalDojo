@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import CadastrarUsuario from "../../support/pages/ContaUsuario.page"
+import ContaUsuario from "../../support/pages/ContaUsuario.page"
 import Comprar from "../../support/pages/adicionarItemCarrinho.page"
 
 
@@ -7,7 +7,7 @@ describe('Funcionalidade: Carrinho de Compras', () => {
 
     beforeEach(() => {
 
-        CadastrarUsuario.LoginPage()
+        ContaUsuario.PaginaLogin()
         cy.fixture("usuarioValido").then((usuarioValido) => {
             cy.AcessarContaUsuario(usuarioValido.email, usuarioValido.senha)                  
         })

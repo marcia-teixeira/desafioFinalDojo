@@ -1,5 +1,7 @@
 let faker = require('faker-br')
 
+//Módulo
+
 export default {
 
     cadastroUsuario: function () {

@@ -1,18 +1,18 @@
 /// <reference types="cypress" />
 
-import CadastrarUsuario from "../../support/pages/ContaUsuario.page"
+import ContaUsuario from "../../support/pages/ContaUsuario.page"
 
 describe('Funcionalidade: Criar conta', () => {
 
     beforeEach(() => {
 
-        CadastrarUsuario.LoginPage()
+        ContaUsuario.PaginaLogin()
 
     });
 
-    it('Cadastrar usuário', () => {
+    it('Deve cadastrar conta de usuário válido com sucesso', () => {
 
-        CadastrarUsuario.CriarConta()
+        ContaUsuario.CriarConta()
 
     });
 
